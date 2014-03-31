@@ -1,0 +1,5 @@
+3-31
+--1.E-R图
+2.功能需求说明
+3.研究技术可行性(JPA+Spring+Spring MVC+EasyUI+HighCharts)
+4.framework
