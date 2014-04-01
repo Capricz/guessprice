@@ -19,11 +19,11 @@ import com.hackathon.guessprice.model.UserDto;
 
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/user2")
 public class DemoController {
 	
 	
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/list2", method = RequestMethod.GET)
 	@ResponseBody
 	public Map<String, Object> getUserList() {
 		List<UserDto> list = new ArrayList<>();

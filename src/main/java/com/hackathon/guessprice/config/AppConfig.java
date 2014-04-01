@@ -24,7 +24,7 @@ public class AppConfig {
 	private static final String URL = "jdbc.url";
 	private static final String USERNAME = "jdbc.username";
 	private static final String PASSWORD = "jdbc.password";
-	/*
+	
 	@Autowired
 	public Environment env;
 	
@@ -50,10 +50,10 @@ public class AppConfig {
 		final JpaTransactionManager transactionManager = new JpaTransactionManager();
 		transactionManager.setEntityManagerFactory(entityManagerFactoryBean().getObject());
 		return transactionManager;
-	}*/
+	}
 
-	@Bean
+	/*@Bean
 	public UserService userService(){
 		return new UserService();
-	}
+	}*/
 }

@@ -3,6 +3,9 @@
 	<persistence-unit name="guessprice" transaction-type="RESOURCE_LOCAL">
 <!-- 		<class>com.zliang.mySprJpa.model.Person</class> -->
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <class>com.hackathon.guessprice.entity.Pricesetup</class>
+        <class>com.hackathon.guessprice.entity.Product</class>
+        <class>com.hackathon.guessprice.entity.User</class>
         <properties>
 
             <!-- <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
