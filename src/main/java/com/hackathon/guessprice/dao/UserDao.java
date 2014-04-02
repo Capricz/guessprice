@@ -11,14 +11,14 @@ import org.springframework.stereotype.Repository;
 import com.hackathon.guessprice.entity.User;
 
 @Repository
-public class UserDao {
+public class UserDao extends BaseDao {
 
-	@PersistenceContext
-	private EntityManager em;
+//	@PersistenceContext
+//	private EntityManager em;
 	
 	@SuppressWarnings("unchecked")
 	public List<User> findAll(){
-		Query query = em.createQuery("from User");
+		Query query = this.getEntityManager().createQuery("from User");
 		return query.getResultList();
 	}
 }
