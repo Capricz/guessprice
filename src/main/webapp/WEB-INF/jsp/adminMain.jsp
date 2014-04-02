@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
 <title>Demo</title>
 <link rel="stylesheet" type="text/css" href="themes/metro/easyui.css" id="swicth-style">
 <script type="text/javascript" src="js/jquery/jquery-1.8.0.min.js"></script>
@@ -297,7 +297,7 @@ function getCookie(name) {//取cookies函数
 <body class="easyui-layout">
 	<div region="north" border="true" class="cs-north">
 		<div class="cs-north-bg">
-		<div class="cs-north-logo">GUESS PRICE</div>
+		<div class="cs-north-logo">Admin</div>
 		<ul class="ui-skin-nav">				
 			<li class="li-skinitem" title="gray"><span class="gray" rel="gray"></span></li>
 			<li class="li-skinitem" title="default"><span class="default" rel="default"></span></li>
@@ -309,29 +309,22 @@ function getCookie(name) {//取cookies函数
 	</div>
 	<div region="west" border="true" split="true" title="Navigation" class="cs-west">
 		<div class="easyui-accordion" fit="true" border="false">
-				<div title="Hot 5 Product">
-					<a href="javascript:void(0);" src="getGuessPriceFormData" class="cs-navi-tab">Proudct 1</a></p>
-					<a href="javascript:void(0);" src="getGuessPriceFormData" class="cs-navi-tab">Proudct 2</a></p>
-					<a href="javascript:void(0);" src="getGuessPriceFormData" class="cs-navi-tab">Proudct 3</a></p>
-					<a href="javascript:void(0);" src="getGuessPriceFormData" class="cs-navi-tab">Proudct 4</a></p>
-					<a href="javascript:void(0);" src="getGuessPriceFormData" class="cs-navi-tab">Proudct 5</a></p>
-				</div>
-				<div title="AdminPannel">
-					<a href="javascript:void(0);" src="admin" class="cs-navi-tab">Login Admin</a></p>
+				<div title="Report Charts">
+					<a href="javascript:void(0);" src="getPieReport" class="cs-navi-tab">Pie Chart</a></p>
 				</div>
 		</div>
 	</div>
 	<div id="mainPanle" region="center" border="true" border="false">
 		 <div id="tabs" class="easyui-tabs"  fit="true" border="false" >
-                <div title="Home">
-				<div class="cs-home-remark">
-					<h1>Let's Guess The Price Now</h1>
-				</div>
-				</div>
+<!--                 <div title="Home"> -->
+<!-- 				<div class="cs-home-remark"> -->
+<!-- 					<h1>Let's Guess The Price Now</h1> -->
+<!-- 				</div> -->
+<!-- 				</div> -->
         </div>
 	</div>
 
-	<div region="south" border="false" id="south"><center>@system.mpo@hp.com</center></div>
+<!-- 	<div region="south" border="false" id="south"><center>@system.mpo@hp.com</center></div> -->
 	
 	<div id="mm" class="easyui-menu cs-tab-menu">
 		<div id="mm-tabupdate">Refresh</div>
