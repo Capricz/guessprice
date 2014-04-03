@@ -1,5 +1,6 @@
 package com.hackathon.guessprice.service;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,6 +14,7 @@ import com.hackathon.guessprice.dao.UserDao;
 import com.hackathon.guessprice.entity.User;
 import com.hackathon.guessprice.model.UserDto;
 import com.hackathon.guessprice.model.UserLoginDto;
+import com.hackathon.guessprice.model.UserPercentItem;
 
 @Service
 public class UserService {
@@ -34,19 +36,22 @@ public class UserService {
 		return userDtoList;
 	}
 	
-	public UserDto findRegionCountList(){
-		UserDto dto = new UserDto();
-		dto.setRegionCountList(new HashMap<String,Double>());
+	public List<UserPercentItem> findRegionCountList(){
+		List<UserPercentItem> result = new ArrayList<>();
 		int countUsers = userDao.countUsers();
 		List<Object[]> regionCountList = userDao.findRegionCountList();
 		if(countUsers>0 && regionCountList!=null && !regionCountList.isEmpty()){
 			for (Object[] o : regionCountList) {
+				UserPercentItem item = new UserPercentItem();
 				String region = (String) o[0];
 				BigInteger regionCount = (BigInteger) o[1];
-				dto.getRegionCountList().put(region, Utils.calculatePercent(regionCount,countUsers));
+				Double percent = Utils.calculatePercent(regionCount,countUsers)*100;
+				item.setRegion(region);
+				item.setPercent(percent);
+				result.add(item);
 			}
 		}
-		return dto;
+		return result;
 	}
 
 	public UserLoginDto login(String username, String password) {

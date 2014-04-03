@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hackathon.guessprice.model.UserDto;
 import com.hackathon.guessprice.model.UserLoginDto;
+import com.hackathon.guessprice.model.UserPercentItem;
 import com.hackathon.guessprice.service.UserService;
 
 @Controller
@@ -36,7 +37,7 @@ public class UserController {
 	
 	@RequestMapping("/userPercent")
 	@ResponseBody
-	public UserDto findUserPercent(){
+	public List<UserPercentItem> findUserPercent(){
 		return userService.findRegionCountList();
 	}
 	

@@ -29,7 +29,7 @@ public class UserDao extends BaseDao {
 	}
 
 	public List<Object[]> findRegionCountList() {
-		String sql = " SELECT REGION,COUNT(REGION) FROM USER GROUP BY REGION ";
+		String sql = " SELECT REGION,COUNT(REGION) FROM USER WHERE ROLE <> 0 GROUP BY REGION ";
 		Query query = this.getEntityManager().createNativeQuery(sql);
 		return query.getResultList();
 	}
