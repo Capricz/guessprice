@@ -9,8 +9,11 @@
 <script type="text/javascript" src="js/highcharts/exporting.js"></script>
 <script>
     $(function () {
-    $('#container').highcharts({
+     var chart;
+     $(document).ready(function() {
+        chart = new Highcharts.Chart({
         chart: {
+            renderTo: 'container',
             plotBackgroundColor: null,
             plotBorderWidth: null,
             plotShadow: false
@@ -29,40 +32,30 @@
                     enabled: true,
                     color: '#000000',
                     connectorColor: '#000000',
-                    format: function() {
-                        return '<b>'+ this.point.name +'</b>: '+Highcharts.numberFormat(this.percentage,2) +' %';
+                    formatter: function () {
+                         return '<b>' + this.point.name + '</b>: ' + Highcharts.numberFormat(this.percentage, 2) + ' %';
                     }
                 }
             }
         },
         series: [{
             type: 'pie',
-            name: 'Browser share',
-//             data: [
-//                 ['Firefox',   45.0],
-//                 ['IE',       26.8],
-//                 {
-//                     name: 'Chrome',
-//                     y: 12.8,
-//                     sliced: true,
-//                     selected: true
-//                 },
-//                 ['Safari',    8.5],
-//                 ['Opera',     6.2],
-//                 ['Others',   0.7]
-//             ]
+            name: 'Browser share'
         }]
+       });
+    
     });
     
     $.ajax({
           type:"GET",
           url:'getPieData',
+          datatype:"json",
           success:function(data){
-              data = [],
+              var jdata = [];
               $.each(data,function(i,d){
-                  data.push([d.name,d.share]);
+                  jdata.push([d.name,d.share]);
               });
-              chart.series[0].setData(data);  
+             chart.series[0].setData(jdata); 
           },
           error:function(e){
               alert(e);
