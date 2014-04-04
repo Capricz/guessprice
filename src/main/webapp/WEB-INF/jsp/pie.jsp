@@ -19,7 +19,7 @@
             plotShadow: false
         },
         title: {
-            text: 'Browser market shares at a specific website, 2010'
+            text: 'User Activity Level'
         },
         tooltip: {
     	    pointFormat: '{series.name}: <b>{point.percentage}%</b>'
@@ -40,7 +40,7 @@
         },
         series: [{
             type: 'pie',
-            name: 'Browser share'
+            name: 'User Activity Level'
         }]
        });
     
@@ -48,12 +48,12 @@
     
     $.ajax({
           type:"GET",
-          url:'getPieData',
+          url:'getPieDataForUser',
           datatype:"json",
           success:function(data){
               var jdata = [];
               $.each(data,function(i,d){
-                  jdata.push([d.name,d.share]);
+                  jdata.push([d.region,d.percent]);
               });
              chart.series[0].setData(jdata); 
           },
