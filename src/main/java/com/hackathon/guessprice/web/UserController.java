@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.hackathon.guessprice.model.UserDto;
 import com.hackathon.guessprice.model.UserLoginDto;
 import com.hackathon.guessprice.model.UserPercentItem;
+import com.hackathon.guessprice.model.UserRegisterDto;
 import com.hackathon.guessprice.service.UserService;
 
 @Controller
@@ -20,6 +21,15 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@RequestMapping("/register")
+	@ResponseBody
+	public UserLoginDto register(@RequestBody UserRegisterDto userRegisterDto){
+//		String username = userRegisterDto.getUsername();
+//		String password = userRegisterDto.getPassword();
+//		String region = userRegisterDto.getRegion();
+		return userService.register(userRegisterDto);
+	}
 	
 	@RequestMapping("/login")
 	@ResponseBody

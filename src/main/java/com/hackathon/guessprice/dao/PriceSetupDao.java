@@ -18,8 +18,9 @@ public class PriceSetupDao extends BaseDao {
 					 "	ROUND(SUM(CASE WHEN a.setPrice > b.marketPrice * 1.2  and  a.setPrice <= b.marketPrice * 1.3 THEN 1 ELSE 0 END)/COUNT(1) * 100 , 2)  as '12-13 discount'	"	+
 					 "	from pricesetup a	"	+
 					 "	inner join product b on a.productId = b.productId	"	+
-					 "	where a.productId = 2 GROUP BY a.productId";
+					 "	where a.productId = :productId GROUP BY a.productId";
 		Query query = this.getEntityManager().createNativeQuery(sql);
+		query.setParameter("productId", productId);
 		return query.getResultList();
 	}
 }

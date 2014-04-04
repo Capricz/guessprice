@@ -40,4 +40,16 @@ public class UserDao extends BaseDao {
 		List<User> list = this.getEntityManager().createQuery(jpql).getResultList();
 		return (User) (list.isEmpty()?null:list.get(0));
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<User> findUserByName(String username) {
+		String jpql = " from User where userName = :userName ";
+		Query query = this.getEntityManager().createQuery(jpql);
+		query.setParameter("userName", username);
+		return query.getResultList();
+	}
+
+	public User finUserById(int userId) {
+		return this.getEntityManager().find(User.class, userId);
+	}
 }

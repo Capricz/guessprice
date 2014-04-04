@@ -7,6 +7,8 @@ import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
+import com.hackathon.guessprice.entity.Product;
+
 @Repository
 public class ProductDao extends BaseDao {
 	
@@ -23,5 +25,9 @@ public class ProductDao extends BaseDao {
 	public int getProductCount() {
 		String jpql = " select count(*) from Product ";
 		return queryCount(jpql);
+	}
+
+	public Product findProductById(int productId) {
+		return this.getEntityManager().find(Product.class, productId);
 	}
 }

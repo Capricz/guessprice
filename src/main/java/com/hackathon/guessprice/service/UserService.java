@@ -13,6 +13,7 @@ import com.hackathon.guessprice.entity.User;
 import com.hackathon.guessprice.model.UserDto;
 import com.hackathon.guessprice.model.UserLoginDto;
 import com.hackathon.guessprice.model.UserPercentItem;
+import com.hackathon.guessprice.model.UserRegisterDto;
 
 @Service
 public class UserService {
@@ -66,5 +67,27 @@ public class UserService {
 		}
 		return dto;
 		
+	}
+
+	public UserLoginDto register(UserRegisterDto userRegisterDto) {
+		UserLoginDto loginDto = new UserLoginDto();
+		String username = userRegisterDto.getUsername();
+		String password = userRegisterDto.getPassword();
+		String region = userRegisterDto.getRegion();
+		List<User> userList = userDao.findUserByName(username);
+		if(userList!=null && !userList.isEmpty()){
+			loginDto.setMsg("username exist!");
+			loginDto.setSuccess(false);
+		}else{
+			User u = new User();
+			u.setUserName(username);
+			u.setPassword(password);
+			u.setRegion(region);
+			u.setRole(1);
+			userDao.save(u);
+			loginDto.setMsg("register successfully!");
+			loginDto.setSuccess(true);
+		}
+		return loginDto;
 	}
 }
