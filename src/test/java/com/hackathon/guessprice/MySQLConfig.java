@@ -2,6 +2,7 @@ package com.hackathon.guessprice;
 
 import javax.sql.DataSource;
 
+import org.hibernate.ejb.HibernatePersistence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -10,7 +11,10 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
@@ -23,7 +27,7 @@ public class MySQLConfig {
 	private static final String URL = "jdbc.url";
 	private static final String USERNAME = "jdbc.username";
 	private static final String PASSWORD = "jdbc.password";
-//	private static final String HIBERNATE_DIALECT = "jdbc.hibernate.dialect";
+	private static final String HIBERNATE_DIALECT = "hibernate.dialect";
 	
 //	public String driverName = "com.mysql.jdbc.Driver";
 //	public String url = "jdbc:mysql://localhost:3306/test";
@@ -38,6 +42,7 @@ public class MySQLConfig {
 	@Bean
 	public DataSource dataSource(){
 		DriverManagerDataSource ds = new DriverManagerDataSource();
+		System.out.println("In dataSource()...");
 		System.out.println(DRIVER_CLASS_NAME + " = "+env.getProperty(DRIVER_CLASS_NAME));
 		System.out.println(URL + " = "+env.getProperty(URL));
 		System.out.println(USERNAME + " = "+env.getProperty(USERNAME));
@@ -57,16 +62,16 @@ public class MySQLConfig {
 	}
 	
 	@Bean
-	public PlatformTransactionManager txManager() {
-		final JpaTransactionManager transactionManager = new JpaTransactionManager();
-		transactionManager.setEntityManagerFactory(entityManagerFactoryBean().getObject());
-		return transactionManager;
-	}
-	
-	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(){
+		System.out.println("In entityManagerFactoryBean()...");
 		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
 		em.setDataSource(dataSource());
+		em.setPersistenceProviderClass(HibernatePersistence.class);
+//		em.setPackagesToScan("com.hackathon.guessprice.entity");
+		em.setPersistenceXmlLocation("classpath:persistence.xml");
+		em.setPersistenceUnitName("guessprice");
+		em.setJpaVendorAdapter(jpaVendorAdapter());
+		em.setJpaDialect(new HibernateJpaDialect());
 		return em;
 //		em.setPackagesToScan(new String[]{"com.zliang.mySprJpa"});
 //		em.setPersistenceUnitName("persistenceUnit");
@@ -77,7 +82,22 @@ public class MySQLConfig {
 //		prop.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
 //		em.setJpaProperties(additionalProperties());
 //		em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-		
+	}
+	
+	private JpaVendorAdapter jpaVendorAdapter() {
+		System.out.println("In jpaVendorAdapter()...");
+		HibernateJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
+		jpaVendorAdapter.setShowSql(true);
+		jpaVendorAdapter.setDatabasePlatform(env.getProperty(HIBERNATE_DIALECT));
+		return null;
+	}
+	
+	@Bean
+	public PlatformTransactionManager txManager() {
+		System.out.println("In txManager()...");
+		final JpaTransactionManager transactionManager = new JpaTransactionManager();
+		transactionManager.setEntityManagerFactory(entityManagerFactoryBean().getObject());
+		return transactionManager;
 	}
 	
 	/*@Bean

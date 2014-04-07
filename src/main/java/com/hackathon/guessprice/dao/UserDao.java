@@ -37,7 +37,11 @@ public class UserDao extends BaseDao {
 	@SuppressWarnings("unchecked")
 	public User findUser(String username, String password) {
 		String jpql = " from User where userName = :username and password = :password ";
-		List<User> list = this.getEntityManager().createQuery(jpql).getResultList();
+		Query query = this.getEntityManager().createQuery(jpql);
+		query.setParameter("username", username);
+		query.setParameter("password", password);
+		List<User> list = query.getResultList();
+		
 		return (User) (list.isEmpty()?null:list.get(0));
 	}
 

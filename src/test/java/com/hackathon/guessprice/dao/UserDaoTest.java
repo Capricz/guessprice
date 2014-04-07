@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
@@ -20,21 +21,21 @@ import com.hackathon.guessprice.entity.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes={MySQLConfig.class}, loader = AnnotationConfigContextLoader.class)
-@TransactionConfiguration(transactionManager="txManager",defaultRollback=true)
+@TransactionConfiguration(transactionManager="txManager",defaultRollback=false)
 public class UserDaoTest {
 	
 	@Autowired
 	public UserDao userDao;
 	
-	@Test
+	/*@Test
 	public void testQueryAll(){
 		List<User> list = userDao.findAll();
 		assertNotNull(list);
 		assertEquals(6, list.size());
-	}
+	}*/
 	
 	@Test
-	@Transactional
+//	@Transactional
 	public void testAddUser(){
 		User u = new User();
 		u.setUserName("user");
@@ -44,5 +45,14 @@ public class UserDaoTest {
 		userDao.save(u);
 //		int count = userDao.queryCount("select count(*) from User");
 //		assertEquals(7, count);
+	}
+	
+	@Test
+//	@Transactional
+	public void testDeleteUser(){
+		User u = userDao.findUser("user", "user");
+		if(u!=null){
+			userDao.delete(u);
+		}
 	}
 }

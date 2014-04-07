@@ -1,23 +1,23 @@
 package com.hackathon.guessprice.model;
 
 public class ProductPriceRangeItem {
-	private String startRange;
-	private String endRange;
+	private int startRange;
+	private int endRange;
 	private Double percent;
 
-	public String getStartRange() {
+	public int getStartRange() {
 		return startRange;
 	}
 
-	public void setStartRange(String startRange) {
+	public void setStartRange(int startRange) {
 		this.startRange = startRange;
 	}
 
-	public String getEndRange() {
+	public int getEndRange() {
 		return endRange;
 	}
 
-	public void setEndRange(String endRange) {
+	public void setEndRange(int endRange) {
 		this.endRange = endRange;
 	}
 

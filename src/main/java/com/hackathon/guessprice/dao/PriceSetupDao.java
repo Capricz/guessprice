@@ -23,4 +23,15 @@ public class PriceSetupDao extends BaseDao {
 		query.setParameter("productId", productId);
 		return query.getResultList();
 	}
+	
+	public List<Object[]> getHotProducts(){
+		String sql = " SELECT A.COUNT,P.productId,P.productName,P.productLine FROM(	"	+
+					 "	SELECT productId,COUNT(*) AS COUNT	"	+
+					 "	FROM pricesetup PS	"	+ 	
+					 "	GROUP BY PS.productId	"	+ 
+					 "	) A	"	+
+					 "	INNER JOIN PRODUCT P ON A.productId = P.productId	"	+
+					 "	LIMIT 0,3 ";
+		return this.getEntityManager().createNativeQuery(sql).getResultList();
+	}
 }

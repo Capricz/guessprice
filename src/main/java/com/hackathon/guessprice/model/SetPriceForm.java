@@ -1,6 +1,6 @@
 package com.hackathon.guessprice.model;
 
-public class SetPriceDto {
+public class SetPriceForm {
 	private int userId;
 	private int productId;
 	private double price;

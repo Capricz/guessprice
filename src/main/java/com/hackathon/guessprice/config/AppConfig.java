@@ -2,6 +2,7 @@ package com.hackathon.guessprice.config;
 
 import javax.sql.DataSource;
 
+import org.hibernate.ejb.HibernatePersistence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -42,6 +43,8 @@ public class AppConfig {
 	public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(){
 		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
 		em.setDataSource(dataSource());
+		em.setPersistenceProviderClass(HibernatePersistence.class);
+		em.setPersistenceXmlLocation("classpath:META-INF/persistence.xml");
 		return em;
 	}
 	

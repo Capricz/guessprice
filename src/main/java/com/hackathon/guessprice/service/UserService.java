@@ -6,14 +6,15 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.hackathon.guessprice.common.Utils;
 import com.hackathon.guessprice.dao.UserDao;
 import com.hackathon.guessprice.entity.User;
 import com.hackathon.guessprice.model.UserDto;
-import com.hackathon.guessprice.model.UserLoginDto;
+import com.hackathon.guessprice.model.UserLoginForm;
 import com.hackathon.guessprice.model.UserPercentItem;
-import com.hackathon.guessprice.model.UserRegisterDto;
+import com.hackathon.guessprice.model.UserRegisterForm;
 
 @Service
 public class UserService {
@@ -53,41 +54,44 @@ public class UserService {
 		return result;
 	}
 
-	public UserLoginDto login(String username, String password) {
-		UserLoginDto dto = new UserLoginDto();
-		dto.setUsername(username);
-		dto.setPassword(password);
+	public UserDto login(String username, String password) {
+		UserDto dto = null;
 		User user = userDao.findUser(username,password);
-		if(user == null){
-			dto.setSuccess(false);
-			dto.setMsg("username or password is invalid");
-		} else{
-			dto.setSuccess(true);
-			dto.setMsg("login successfully");
+		if(user != null){
+			dto.setUserId(user.getUserId());
+			dto.setUsername(username);
+			dto.setPassword(password);
+			dto.setRegion(user.getRegion());
+			dto.setUserType(1);
 		}
 		return dto;
-		
+	}
+	
+	public boolean isExistUsername(UserRegisterForm userRegisterForm){
+		List<User> userList = userDao.findUserByName(userRegisterForm.getUsername());
+		if(userList!=null && !userList.isEmpty()){
+			return true;
+		}
+		return false;
 	}
 
-	public UserLoginDto register(UserRegisterDto userRegisterDto) {
-		UserLoginDto loginDto = new UserLoginDto();
-		String username = userRegisterDto.getUsername();
-		String password = userRegisterDto.getPassword();
-		String region = userRegisterDto.getRegion();
-		List<User> userList = userDao.findUserByName(username);
-		if(userList!=null && !userList.isEmpty()){
-			loginDto.setMsg("username exist!");
-			loginDto.setSuccess(false);
-		}else{
-			User u = new User();
-			u.setUserName(username);
-			u.setPassword(password);
-			u.setRegion(region);
-			u.setRole(1);
-			userDao.save(u);
-			loginDto.setMsg("register successfully!");
-			loginDto.setSuccess(true);
-		}
-		return loginDto;
+	@Transactional
+	public UserDto register(UserRegisterForm userRegisterForm) {
+		UserDto userDto = new UserDto();
+		String username = userRegisterForm.getUsername();
+		String password = userRegisterForm.getPassword();
+		String region = userRegisterForm.getRegion();
+		User u = new User();
+		u.setUserName(username);
+		u.setPassword(password);
+		u.setRegion(region);
+		u.setRole(1);
+		userDao.save(u);
+		userDto.setPassword(password);
+		userDto.setRegion(region);
+		userDto.setUserId(u.getUserId());
+		userDto.setUsername(username);
+		userDto.setUserType(1);
+		return userDto;
 	}
 }

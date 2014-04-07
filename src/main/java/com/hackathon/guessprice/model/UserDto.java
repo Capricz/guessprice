@@ -6,35 +6,9 @@ public class UserDto {
 
 	private int userId;
 	private String username;
-	private Map<String,Double> regionCountList;
-	private String loginName;
-	private String loginPasswd;
-	private String errMsg;
-	
-	public String getErrMsg() {
-		return errMsg;
-	}
-	public void setErrMsg(String errMsg) {
-		this.errMsg = errMsg;
-	}
-	public String getLoginName() {
-		return loginName;
-	}
-	public void setLoginName(String loginName) {
-		this.loginName = loginName;
-	}
-	public String getLoginPasswd() {
-		return loginPasswd;
-	}
-	public void setLoginPasswd(String loginPasswd) {
-		this.loginPasswd = loginPasswd;
-	}
-	public Map<String, Double> getRegionCountList() {
-		return regionCountList;
-	}
-	public void setRegionCountList(Map<String, Double> regionCountList) {
-		this.regionCountList = regionCountList;
-	}
+	private String password;
+	private String region;
+	private int userType;
 	public int getUserId() {
 		return userId;
 	}
@@ -47,4 +21,24 @@ public class UserDto {
 	public void setUsername(String username) {
 		this.username = username;
 	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getRegion() {
+		return region;
+	}
+	public void setRegion(String region) {
+		this.region = region;
+	}
+	public int getUserType() {
+		return userType;
+	}
+	public void setUserType(int userType) {
+		this.userType = userType;
+	}
+	
+	
 }

@@ -17,7 +17,7 @@ import com.hackathon.guessprice.entity.Product;
 import com.hackathon.guessprice.entity.User;
 import com.hackathon.guessprice.model.MessageDto;
 import com.hackathon.guessprice.model.ProductLineItem;
-import com.hackathon.guessprice.model.SetPriceDto;
+import com.hackathon.guessprice.model.SetPriceForm;
 
 @Service
 public class ProductService {
@@ -51,25 +51,4 @@ public class ProductService {
 		return result;
 	}
 
-	public MessageDto setPrice(SetPriceDto dto) {
-		int userId = dto.getUserId();
-		int productId = dto.getProductId();
-		double price = dto.getPrice();
-		Pricesetup ps = new Pricesetup();
-		
-		User u = userDao.finUserById(userId);
-		Product p = productDao.findProductById(productId);
-		
-		ps.setProduct(p);
-		ps.setSetPrice(BigDecimal.valueOf(price));
-		ps.setUser(u);
-		
-		pricesetupDao.save(ps);
-		
-		MessageDto msgDto = new MessageDto();
-		msgDto.setMsg("set price successfully");
-		msgDto.setSuccess(true);
-		
-		return msgDto;
-	}
 }
