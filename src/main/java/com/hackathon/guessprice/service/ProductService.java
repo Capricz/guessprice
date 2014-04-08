@@ -16,6 +16,7 @@ import com.hackathon.guessprice.entity.Pricesetup;
 import com.hackathon.guessprice.entity.Product;
 import com.hackathon.guessprice.entity.User;
 import com.hackathon.guessprice.model.MessageDto;
+import com.hackathon.guessprice.model.ProductDto;
 import com.hackathon.guessprice.model.ProductLineItem;
 import com.hackathon.guessprice.model.SetPriceForm;
 
@@ -49,6 +50,16 @@ public class ProductService {
 			}
 		}
 		return result;
+	}
+
+	public ProductDto findProductById(String productId) {
+		Product product = productDao.findProductById(Integer.valueOf(productId));
+		ProductDto dto = new ProductDto();
+		dto.setProductId(product.getProductId());
+		dto.setProductName(product.getProductName());
+		dto.setProductDesc(product.getProductDescription());
+		dto.setProductLine(product.getProductLine());
+		return dto;
 	}
 
 }

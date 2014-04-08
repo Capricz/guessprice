@@ -6,6 +6,8 @@ import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
+import com.hackathon.guessprice.entity.Pricesetup;
+
 @Repository
 public class PriceSetupDao extends BaseDao {
 	
@@ -33,5 +35,14 @@ public class PriceSetupDao extends BaseDao {
 					 "	INNER JOIN PRODUCT P ON A.productId = P.productId	"	+
 					 "	LIMIT 0,3 ";
 		return this.getEntityManager().createNativeQuery(sql).getResultList();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Pricesetup> findPriceSetueByUserAndProduct(int userId,String productId) {
+		String sql = " SELECT * FROM pricesetup PS WHERE PS.userId = :userId AND PS.productId = :productId ";
+		Query query = this.getEntityManager().createNativeQuery(sql,Pricesetup.class);
+		query.setParameter("userId", userId);
+		query.setParameter("productId", productId);
+		return query.getResultList();
 	}
 }

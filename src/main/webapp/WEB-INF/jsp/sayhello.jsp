@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<center><h2>Hello Guess Price</h2></center>
-click here <a href="mvc/sayhello">Hello World</a>
+<center><h2>You have set this product price!</h2></center>
+
 </body>
 </html>

@@ -16,9 +16,7 @@ import com.hackathon.guessprice.entity.Pricesetup;
 import com.hackathon.guessprice.entity.Product;
 import com.hackathon.guessprice.entity.User;
 import com.hackathon.guessprice.model.HotProductItem;
-import com.hackathon.guessprice.model.MessageDto;
 import com.hackathon.guessprice.model.ProductPriceRangeItem;
-import com.hackathon.guessprice.model.SetPriceForm;
 
 @Service
 public class PriceSetupService {
@@ -35,7 +33,6 @@ public class PriceSetupService {
 	public List<ProductPriceRangeItem> getPriceRangePercentByProduct(int productId){
 		List<ProductPriceRangeItem> result = new ArrayList<>();
 		List<Object[]> list = priceSetupDao.getPriceRangePercentByProduct(productId);
-		String startRange,endRange = "";
 		double percent = 0.0;
 		if(list!=null && !list.isEmpty()){
 			Object[] oArr = list.get(0);
@@ -43,9 +40,10 @@ public class PriceSetupService {
 				ProductPriceRangeItem item = new ProductPriceRangeItem();
 				percent = ((BigDecimal) oArr[i]).doubleValue();
 				
-				item.setStartRange(i+6);
-				item.setEndRange(i+7);
+				item.setStartRange(i+7);
+				item.setEndRange(i+8);
 				item.setPercent(percent);
+				item.setRangeDesc(" "+item.getStartRange()+"0% to "+item.getEndRange()+"0%");
 				result.add(item);
 			}
 		}
@@ -98,5 +96,13 @@ public class PriceSetupService {
 		ps.setUser(u);
 		
 		priceSetupDao.save(ps);
+	}
+
+	public boolean hasGuessPriceForProduct(int userId, String productId) {
+		List<Pricesetup> list = priceSetupDao.findPriceSetueByUserAndProduct(userId,productId);
+		if(list!=null && !list.isEmpty()){
+			return true;
+		}
+		return false;
 	}
 }

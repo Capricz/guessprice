@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Demo</title>
 <link rel="stylesheet" type="text/css" href="themes/metro/easyui.css" id="swicth-style">
 <script type="text/javascript" src="js/jquery/jquery-1.8.0.min.js"></script>
@@ -310,15 +310,20 @@ function getCookie(name) {//取cookies函数
 	<div region="west" border="true" split="true" title="Navigation" class="cs-west">
 		<div class="easyui-accordion" fit="true" border="false">
 				<div title="Hot 5 Product">
-					<a href="javascript:void(0);" src="getGuessPriceFormData" class="cs-navi-tab">Proudct 1</a></p>
-					<a href="javascript:void(0);" src="getGuessPriceFormData" class="cs-navi-tab">Proudct 2</a></p>
+					<a href="javascript:void(0);" src=<%=request.getContextPath() %>"/getGuessPriceFormData/2" class="cs-navi-tab">Proudct 1</a></p>
+					<a href="javascript:void(0);" src="getGuessPriceFormData2222" class="cs-navi-tab">Proudct 22222</a></p>
 					<a href="javascript:void(0);" src="getGuessPriceFormData" class="cs-navi-tab">Proudct 3</a></p>
 					<a href="javascript:void(0);" src="getGuessPriceFormData" class="cs-navi-tab">Proudct 4</a></p>
 					<a href="javascript:void(0);" src="getGuessPriceFormData" class="cs-navi-tab">Proudct 5</a></p>
 				</div>
 				<div title="Report And Charts">
 					<a href="javascript:void(0);" src="getPieReport" class="cs-navi-tab">User Activity Chart</a></p>
-					<a href="javascript:void(0);" src="getColumnReport" class="cs-navi-tab">Product Chart</a></p>
+					<a href="javascript:void(0);" src="getPieReport2" class="cs-navi-tab">PL Chart</a></p>
+					<a href="javascript:void(0);" src="getColumnReport1" class="cs-navi-tab">Product Chart1</a></p>
+					<a href="javascript:void(0);" src="getColumnReport2" class="cs-navi-tab">Product Chart2</a></p>
+					<a href="javascript:void(0);" src="getColumnReport3" class="cs-navi-tab">Product Chart3</a></p>
+					<a href="javascript:void(0);" src="getColumnReport4" class="cs-navi-tab">Product Chart4</a></p>
+					<a href="javascript:void(0);" src="getColumnReport5" class="cs-navi-tab">Product Chart5</a></p>
 				</div>
 		</div>
 	</div>

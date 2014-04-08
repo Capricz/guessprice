@@ -4,6 +4,15 @@ public class ProductPriceRangeItem {
 	private int startRange;
 	private int endRange;
 	private Double percent;
+	private String rangeDesc;
+
+	public String getRangeDesc() {
+		return rangeDesc;
+	}
+
+	public void setRangeDesc(String rangeDesc) {
+		this.rangeDesc = rangeDesc;
+	}
 
 	public int getStartRange() {
 		return startRange;

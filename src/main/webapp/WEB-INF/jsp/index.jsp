@@ -310,11 +310,11 @@ function getCookie(name) {//取cookies函数
 	<div region="west" border="true" split="true" title="Navigation" class="cs-west">
 		<div class="easyui-accordion" fit="true" border="false">
 				<div title="Hot 5 Product">
-					<a href="javascript:void(0);" src="getGuessPriceFormData" class="cs-navi-tab">Proudct 1</a></p>
-					<a href="javascript:void(0);" src="getGuessPriceFormData" class="cs-navi-tab">Proudct 2</a></p>
-					<a href="javascript:void(0);" src="getGuessPriceFormData" class="cs-navi-tab">Proudct 3</a></p>
-					<a href="javascript:void(0);" src="getGuessPriceFormData" class="cs-navi-tab">Proudct 4</a></p>
-					<a href="javascript:void(0);" src="getGuessPriceFormData" class="cs-navi-tab">Proudct 5</a></p>
+					<a href="javascript:void(0);" src="getGuessPriceFormData/1" class="cs-navi-tab">Proudct 1</a></p>
+					<a href="javascript:void(0);" src="getGuessPriceFormData/2" class="cs-navi-tab">Proudct 2</a></p>
+					<a href="javascript:void(0);" src="getGuessPriceFormData/3" class="cs-navi-tab">Proudct 3</a></p>
+					<a href="javascript:void(0);" src="getGuessPriceFormData/4" class="cs-navi-tab">Proudct 4</a></p>
+					<a href="javascript:void(0);" src="getGuessPriceFormData/5" class="cs-navi-tab">Proudct 5</a></p>
 				</div>
 <!-- 				<div title="AdminPannel"> -->
 <!-- 					<a href="javascript:void(0);" src="admin" class="cs-navi-tab">Login Admin</a></p> -->

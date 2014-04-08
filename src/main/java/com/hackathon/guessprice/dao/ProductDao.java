@@ -1,6 +1,6 @@
 package com.hackathon.guessprice.dao;
 
-import java.math.BigInteger;
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.Query;
@@ -29,7 +29,7 @@ public class ProductDao extends BaseDao {
 					  "		GROUP BY PD.productLine	"	+
 					  "	) A";
 		Query query = this.getEntityManager().createNativeQuery(sql);
-		return ((BigInteger)query.getResultList().get(0)).intValue();
+		return ((BigDecimal)query.getResultList().get(0)).intValue();
 	}
 
 	public Product findProductById(int productId) {
