@@ -19,14 +19,14 @@ import com.hackathon.guessprice.model.UserDto;
 import com.hackathon.guessprice.service.PriceSetupService;
 
 @Controller
-@RequestMapping("/pricesetup")
+//@RequestMapping("/pricesetup")
 @SessionAttributes("currUser")
 public class PriceSetupController {
 
 	@Autowired
 	private PriceSetupService priceSetupService;
 	
-	@RequestMapping(value="/{productId}",method=RequestMethod.GET)
+	@RequestMapping(value="/pricesetup/{productId}",method=RequestMethod.GET)
 	@ResponseBody
 	public List<ProductPriceRangeItem> getPriceRangePercentByProduct(@PathVariable String productId){
 		return priceSetupService.getPriceRangePercentByProduct(Integer.valueOf(productId));
@@ -48,6 +48,6 @@ public class PriceSetupController {
 			double price = setPriceForm.getPrice();
 			priceSetupService.setPrice(userId,productId,price);
 		} 
-		return "index";
+		return "thanks";
 	}
 }

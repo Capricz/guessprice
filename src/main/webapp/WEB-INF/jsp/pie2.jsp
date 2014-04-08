@@ -48,7 +48,7 @@
     
     $.ajax({
           type:"GET",
-          url:'product/productLineCountPercent',
+          url:'productLineCountPercent',
           datatype:"json",
           success:function(data){
               var jdata = [];

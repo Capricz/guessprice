@@ -16,7 +16,7 @@ import com.hackathon.guessprice.model.UserDto;
 import com.hackathon.guessprice.service.ProductService;
 
 @Controller
-@RequestMapping("/product")
+//@RequestMapping("/product")
 public class ProductController {
 	
 	@Autowired

@@ -19,7 +19,7 @@ import com.hackathon.guessprice.model.UserRegisterForm;
 import com.hackathon.guessprice.service.UserService;
 
 @Controller
-@RequestMapping("/")
+//@RequestMapping("/")
 @SessionAttributes("currUser")
 public class UserController {
 	
@@ -83,6 +83,12 @@ public class UserController {
 	public String printWelcome(ModelMap model) {
 //		model.addAttribute("message", "Spring 3 MVC Hello World");
 		return "index";
+	}
+	
+	@RequestMapping(value="/thanks",method = RequestMethod.GET)
+	public String thanks(ModelMap model) {
+//		model.addAttribute("message", "Spring 3 MVC Hello World");
+		return "thanks";
 	}
 	
 	

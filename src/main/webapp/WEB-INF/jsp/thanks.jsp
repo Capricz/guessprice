@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<center><h2>You have set this product price!</h2></center>
-
+<center><h2>Thanks for your participation,welcome to guess another product!</h2></center>
+<%-- <a href="<%=request.getContextPath()%>/index">首页</a> --%>
 </body>
 </html>

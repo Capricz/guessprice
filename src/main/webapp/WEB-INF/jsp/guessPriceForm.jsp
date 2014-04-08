@@ -72,12 +72,13 @@
     				var dataObject =  {"productId" : productId, "price" : price};
            			$.ajax({            
                   		type:"POST", 
-                  		url:"/guessprice/pricesetup/setPrice", 
+                  		url: "<%=request.getContextPath()%>/setPrice", 
                   		datatype:"json",
                   		contentType:"application/json;charset=UTF-8",               
             			data:JSON.stringify(dataObject),                 
                   		success:function(data) {
-                  			 document.location = "index";
+                  			 document.location = "<%=request.getContextPath()%>/thanks";
+                  			 alert('submit successfully!');
                       	}
                      });       
         	} 
