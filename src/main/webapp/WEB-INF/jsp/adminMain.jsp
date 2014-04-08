@@ -309,11 +309,16 @@ function getCookie(name) {//取cookies函数
 	</div>
 	<div region="west" border="true" split="true" title="Navigation" class="cs-west">
 		<div class="easyui-accordion" fit="true" border="false">
-				<div title="Report Charts">
-					<a href="javascript:void(0);" src="getPieReport" class="cs-navi-tab">User Activity Chart</a></p>
+				<div title="Hot 5 Product">
+					<a href="javascript:void(0);" src="getGuessPriceFormData" class="cs-navi-tab">Proudct 1</a></p>
+					<a href="javascript:void(0);" src="getGuessPriceFormData" class="cs-navi-tab">Proudct 2</a></p>
+					<a href="javascript:void(0);" src="getGuessPriceFormData" class="cs-navi-tab">Proudct 3</a></p>
+					<a href="javascript:void(0);" src="getGuessPriceFormData" class="cs-navi-tab">Proudct 4</a></p>
+					<a href="javascript:void(0);" src="getGuessPriceFormData" class="cs-navi-tab">Proudct 5</a></p>
 				</div>
-				<div title="Report Charts">
+				<div title="Report And Charts">
 					<a href="javascript:void(0);" src="getPieReport" class="cs-navi-tab">User Activity Chart</a></p>
+					<a href="javascript:void(0);" src="getColumnReport" class="cs-navi-tab">Product Chart</a></p>
 				</div>
 		</div>
 	</div>

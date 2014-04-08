@@ -316,9 +316,9 @@ function getCookie(name) {//取cookies函数
 					<a href="javascript:void(0);" src="getGuessPriceFormData" class="cs-navi-tab">Proudct 4</a></p>
 					<a href="javascript:void(0);" src="getGuessPriceFormData" class="cs-navi-tab">Proudct 5</a></p>
 				</div>
-				<div title="AdminPannel">
-					<a href="javascript:void(0);" src="admin" class="cs-navi-tab">Login Admin</a></p>
-				</div>
+<!-- 				<div title="AdminPannel"> -->
+<!-- 					<a href="javascript:void(0);" src="admin" class="cs-navi-tab">Login Admin</a></p> -->
+<!-- 				</div> -->
 		</div>
 	</div>
 	<div id="mainPanle" region="center" border="true" border="false">

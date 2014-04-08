@@ -9,6 +9,7 @@ public class UserDto {
 	private String password;
 	private String region;
 	private int userType;
+	private boolean success;
 	public int getUserId() {
 		return userId;
 	}
@@ -38,6 +39,12 @@ public class UserDto {
 	}
 	public void setUserType(int userType) {
 		this.userType = userType;
+	}
+	public boolean isSuccess() {
+		return success;
+	}
+	public void setSuccess(boolean success) {
+		this.success = success;
 	}
 	
 	

@@ -27,8 +27,8 @@ public class UserController {
 	private UserService userService;
 	
 	@RequestMapping(value="/register",method=RequestMethod.POST)
-//	@ResponseBody
-	public String register(@RequestBody UserRegisterForm userRegisterForm,ModelMap modelMap){
+	@ResponseBody
+	public UserDto register(@RequestBody UserRegisterForm userRegisterForm,ModelMap modelMap){
 //		String username = userRegisterDto.getUsername();
 //		String password = userRegisterDto.getPassword();
 //		String region = userRegisterDto.getRegion();
@@ -36,24 +36,35 @@ public class UserController {
 		if(userService.isExistUsername(userRegisterForm)){
 //			loginDto.setMsg("username exist!");
 //			loginDto.setSuccess(false);
-			return "register";
+//			return "register";
+			currUser = new UserDto();
+			currUser.setSuccess(false);
 		}else{
 //			loginDto.setMsg("register successfully!");
 //			loginDto.setSuccess(true);
 			currUser = userService.register(userRegisterForm);
+			currUser.setSuccess(true);
 			modelMap.addAttribute("currUser", currUser);
 		}
-		return "index";
+//		return "index";
+		return currUser;
 	}
 	
 	@RequestMapping(value="/login",method=RequestMethod.POST)
-//	@ResponseBody
-	public String login(@RequestBody UserLoginForm userLoginForm,ModelMap modelMap){
+	@ResponseBody
+	public UserDto login(@RequestBody UserLoginForm userLoginForm,ModelMap modelMap){
 		String username = userLoginForm.getUsername();
 		String password = userLoginForm.getPassword();
 		UserDto currUser = userService.login(username,password);
-		modelMap.addAttribute("currUser", currUser);
-		return "index";
+		if(currUser==null){
+			currUser = new UserDto();
+			currUser.setSuccess(false);
+		} else{
+			currUser.setSuccess(true);
+			modelMap.addAttribute("currUser", currUser);
+		}
+//		return "index";
+		return currUser;
 	}
 	
 	@RequestMapping(value="/list",method=RequestMethod.GET)

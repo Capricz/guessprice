@@ -58,6 +58,7 @@ public class UserService {
 		UserDto dto = null;
 		User user = userDao.findUser(username,password);
 		if(user != null){
+			dto = new UserDto();
 			dto.setUserId(user.getUserId());
 			dto.setUsername(username);
 			dto.setPassword(password);
