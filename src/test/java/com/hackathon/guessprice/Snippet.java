@@ -1,4 +1,4 @@
-package com.hackathon.guessprice。snippet;
+/*package com.hackathon.guessprice。snippet;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,4 +19,4 @@ public class BbtForumController {
 		model.addAttribute("currUser",user); //②向ModelMap中添加一个属性          
 		return "listTopic";     
 	}
-}
+}*/
