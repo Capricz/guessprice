@@ -45,6 +45,7 @@ public class AppConfig {
 		em.setDataSource(dataSource());
 		em.setPersistenceProviderClass(HibernatePersistence.class);
 		em.setPersistenceXmlLocation("classpath:META-INF/persistence.xml");
+		em.setPackagesToScan("com.hackathon.guessprice.entity");
 		return em;
 	}
 	

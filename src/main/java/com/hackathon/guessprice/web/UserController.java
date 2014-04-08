@@ -19,7 +19,7 @@ import com.hackathon.guessprice.model.UserRegisterForm;
 import com.hackathon.guessprice.service.UserService;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/")
 @SessionAttributes("currUser")
 public class UserController {
 	
@@ -77,6 +77,12 @@ public class UserController {
 	@ResponseBody
 	public List<UserPercentItem> findUserPercent(){
 		return userService.findRegionCountList();
+	}
+	
+	@RequestMapping(value="/index",method = RequestMethod.GET)
+	public String printWelcome(ModelMap model) {
+//		model.addAttribute("message", "Spring 3 MVC Hello World");
+		return "index";
 	}
 	
 	

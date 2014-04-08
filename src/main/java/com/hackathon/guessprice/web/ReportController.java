@@ -19,7 +19,7 @@ public class ReportController {
 	private UserService userService;
 	
 	@RequestMapping(value="/getPieReport",method = RequestMethod.GET)
-	public String printWelcome(ModelMap model) {
+	public String getPieReport(ModelMap model) {
 		return "pie";
 	}
 	
@@ -28,6 +28,11 @@ public class ReportController {
 	public List<UserPercentItem> getReportPieData(){
 		List<UserPercentItem> result = userService.findRegionCountList();
 		return result;
+	}
+	
+	@RequestMapping(value="/getColumnReport",method = RequestMethod.GET)
+	public String getColumnReport(ModelMap model) {
+		return "column";
 	}
 }
 

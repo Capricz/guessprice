@@ -63,7 +63,7 @@ public class UserService {
 			dto.setUsername(username);
 			dto.setPassword(password);
 			dto.setRegion(user.getRegion());
-			dto.setUserType(1);
+			dto.setUserType(user.getRole());
 		}
 		return dto;
 	}

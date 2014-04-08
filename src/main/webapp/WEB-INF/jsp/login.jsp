@@ -27,7 +27,7 @@
     				var dataObject =  {"username" : username, "password" : password};
            			$.ajax({            
                   		type:"POST", 
-                  		url:"user/login", 
+                  		url:"login", 
                   		datatype:"json",
                   		contentType:"application/json;charset=UTF-8",               
             			data:JSON.stringify(dataObject),                 

@@ -12,19 +12,24 @@ import com.hackathon.guessprice.entity.Product;
 @Repository
 public class ProductDao extends BaseDao {
 	
+	@SuppressWarnings("unchecked")
 	public List<Object[]> getProductLinePercent() {
-		String sql = "	SELECT P.productLine,PSCOUNT.UCOUNT FROM PRODUCT P	"
-					+ "	LEFT JOIN (	"
-					+ "		SELECT PRODUCTID,COUNT(1) AS UCOUNT FROM PRICESETUP PS GROUP BY productId	"
-					+ "	) PSCOUNT ON P.PRODUCTID = PSCOUNT.PRODUCTID	"
-					+ "	GROUP BY P.productLine ";
+		String sql = "	SELECT PD.productLine,COUNT(PS.productId) FROM product PD	"	+
+					 "	LEFT JOIN pricesetup PS ON PD.productId = PS.productId	"	+
+					 "	GROUP BY PD.productLine	";
 		Query query = this.getEntityManager().createNativeQuery(sql);
 		return query.getResultList();
 	}
 
 	public int getProductCount() {
-		String jpql = " select count(*) from Product ";
-		return queryCount(jpql);
+		String sql = "	SELECT SUM(A.PCOUNT) " +
+					  "	FROM (	"	+
+					  "		SELECT COUNT(PS.productId) AS PCOUNT FROM product PD	"	+
+					  "		LEFT JOIN pricesetup PS ON PD.productId = PS.productId	"	+
+					  "		GROUP BY PD.productLine	"	+
+					  "	) A";
+		Query query = this.getEntityManager().createNativeQuery(sql);
+		return ((BigInteger)query.getResultList().get(0)).intValue();
 	}
 
 	public Product findProductById(int productId) {
