@@ -6,11 +6,11 @@
 
 4-8
 功能列表
-1.注册用户
-2.用户登录
-3.显示最热门产品
-4.设定价格
-5.根据产品Id查询产品
-6.显示用户分布
-7.显示某一产品价格分布
-8.显示产品线关注分布
+1.注册用户 			- UserController
+2.用户登录 			- UserController
+3.显示最热门产品 		- PriceSetupController
+4.设定价格 			- PriceSetupController
+5.根据产品Id查询产品 	- PriceSetupController
+6.显示用户分布 		- UserController
+7.显示某一产品价格分布 	- PriceSetupController
+8.显示产品线关注分布 	- ProductController
